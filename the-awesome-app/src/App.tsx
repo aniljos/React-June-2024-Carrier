@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Message from './components/Message';
+import Counter from './components/Counter';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -21,8 +23,11 @@ function App() {
         </a>
       </header>
       <main>
-        <Message text="Hello React" color="blue"/>
-        <Message text="Welcome to JSX"/>
+        {/* <Message text="Hello React" color="blue"/>
+        <Message text="Welcome to JSX"/> */}
+        {/* <Counter initValue={5}/>	
+        <Counter initValue={10}/>	 */}
+        <Login/>
       </main>
     </div>
   );
