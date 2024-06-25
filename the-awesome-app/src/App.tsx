@@ -1,35 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import Message from './components/Message';
 import Counter from './components/Counter';
 import Login from './components/Login';
+import 'bootstrap/dist/css/bootstrap.css';
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import ListProducts from './components/ListProducts';
+import EditProduct from './components/EditProduct';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <main>
-        {/* <Message text="Hello React" color="blue"/>
-        <Message text="Welcome to JSX"/> */}
-        {/* <Counter initValue={5}/>	
-        <Counter initValue={10}/>	 */}
-        <Login/>
-      </main>
-    </div>
+
+    <Router>
+      <div className='container'>
+        <nav className="navbar navbar-dark bg-dark">
+          <div className="container-fluid">
+            <Link className="navbar-brand" to="/">React</Link>
+            <ul className="nav">
+              <li className="nav-item">
+                <Link className="nav-link"  to="/">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/counter">Counter</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/products">Products</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main style={{border: "1px solid blue", height: "400px"}}>
+            <Routes>
+              <Route path='/' element={<Message text='Welcome to React' color='blue' />} />
+              <Route path='/counter' element={<Counter initValue={10} />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/products' element={<ListProducts />} />
+              <Route path="/products/:id" element={<EditProduct/>}/>
+            </Routes>
+
+        </main>
+      </div>
+    </Router>
   );
 }
 

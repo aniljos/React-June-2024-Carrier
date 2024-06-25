@@ -6,7 +6,7 @@ function Login(){
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-
+    
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -16,25 +16,39 @@ function Login(){
     //if the dependency list is empty, the callback will be invoked only once on mount
     useEffect(() => {
 
-        console.log("useEffect on mount..");
+        console.log("useEffect on login mount..");
         usernameRef.current?.focus();
+       
+        //invoked on unmouting the component
+        return () => {
+            console.log("useEffect on login ummount..");
+        }
 
     }, []);
 
-    function handleLogin(){
+    async function handleLogin(){
 
         if(userName && password){
             console.log("User Name", userName, usernameRef.current?.value);
             console.log("Password", password, passwordRef.current?.value);
             //TODO: Call the login API
-            axios
-                .post("http://localhost:9001/login", { name: userName, password: password})
-                //.then(successCallback, errorCallback)
-                .then((response) => {
-                    console.log("Response", response);
-                }, (error)=> {
-                    console.log("Error", error);
-                })
+            // axios
+            //     .post("http://localhost:9001/login", { name: userName, password: password})
+            //     //.then(successCallback, errorCallback)
+            //     .then((response) => {
+            //         console.log("Response", response);
+            //     }, (error)=> {
+            //         console.log("Error", error);
+            //         setMessage("Invalid cerdentials..");
+            //     })
+
+            try {
+                const response = await axios.post("http://localhost:9001/login", { name: userName, password: password})
+                console.log("Response", response);
+            } catch (error) {
+                console.log("Error", error);
+                setMessage("Invalid cerdentials..");
+            }
         }
         else{
             setMessage("Enter the cerdentials..");
