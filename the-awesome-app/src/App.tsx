@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import ListProducts from './components/ListProducts';
 import EditProduct from './components/EditProduct';
+import ProtectedRoute from './components/ProtectedRoute';
+import GadgetStore from './components/GadgetsStore';
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/products">Products</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/gadgets">Gadgets</Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -36,10 +41,10 @@ function App() {
               <Route path='/' element={<Message text='Welcome to React' color='blue' />} />
               <Route path='/counter' element={<Counter initValue={10} />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/products' element={<ListProducts />} />
+              <Route path='/products' element={<ProtectedRoute> <ListProducts /></ProtectedRoute>} />
               <Route path="/products/:id" element={<EditProduct/>}/>
+              <Route path='/gadgets' element={<ProtectedRoute> <GadgetStore /></ProtectedRoute>} />
             </Routes>
-
         </main>
       </div>
     </Router>
