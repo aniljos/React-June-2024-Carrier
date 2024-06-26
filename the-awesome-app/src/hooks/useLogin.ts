@@ -1,6 +1,11 @@
 import {useRef, useEffect, useState, ChangeEvent} from 'react';
 import axios from 'axios';
 import { useTitle } from '../hooks/useTitle';
+import {useDispatch} from 'react-redux';
+import { AppDispatch } from '../redux/store';
+import { createLoginAction, createLogoutAction } from '../redux/authReducer';
+import { useNavigate } from 'react-router-dom';
+
 
 export function useLogin(){
 
@@ -10,6 +15,8 @@ export function useLogin(){
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     useTitle("Login");
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -44,9 +51,22 @@ export function useLogin(){
                 const response = await axios.post("http://localhost:9001/login", 
                         { name: userName, password: password})
                 console.log("Response", response);
+                // dispatch({type:"login", payload: 
+                //                             {isAuthenticated: true, 
+                //                                 userName: userName, 
+                //                                 accessToken: response.data.accessToken, 
+                //                                 refreshToken: response.data.refreshToken}})    
+                dispatch(createLoginAction({isAuthenticated: true,
+                                                userName: userName,
+                                                accessToken: response.data.accessToken, 
+                                                refreshToken: response.data.refreshToken}));
+                navigate("/products");
+
             } catch (error) {
                 console.log("Error", error);
                 setMessage("Invalid cerdentials..");
+                //dispatch({type: "Logout"});
+                dispatch(createLogoutAction())
             }
         }
         else{
