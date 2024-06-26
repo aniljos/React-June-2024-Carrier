@@ -31,7 +31,7 @@ function App() {
             </ul>
           </div>
         </nav>
-        <main style={{border: "1px solid blue", height: "400px"}}>
+        <main style={{border: "1px solid blue", minHeight: "400px", padding: '10px'}}>
             <Routes>
               <Route path='/' element={<Message text='Welcome to React' color='blue' />} />
               <Route path='/counter' element={<Counter initValue={10} />} />
