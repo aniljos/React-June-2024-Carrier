@@ -2,12 +2,14 @@ import {combineReducers} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
 import {authReducer} from './authReducer';
 import { gadgetsReducer } from './gadgetsReducer';
+import { productReducer } from './productReducer';
 
 
 
 const reducer = combineReducers({
     auth: authReducer,
-    gadgets: gadgetsReducer
+    gadgets: gadgetsReducer,
+    data: productReducer
 })
 
 //store

@@ -1,37 +1,37 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {useDispatch} from 'react-redux'
 import React, {MouseEvent} from 'react';
 import { Product } from "../model/Product";
-import { useProducts } from "../hooks/useProducts";
-import {useDispatch, useSelector, useStore} from 'react-redux';
-import { AppDispatch, RootState } from "../redux/store";
-import { addToCart as addToReduxCart } from "../redux/gadgetsReducer";
+import {addToCart as addItemToCart}  from'../redux/gadgetsReducer';
 import { CartItem } from "../model/CartItem";
-import { fetchProductsAction } from "../redux/productReducer";
 
 const GadgetStore: React.FC = () => {
 
 
-    //const {products, setProducts} = useProducts();
-    const products = useSelector((state: RootState) => state.data.products);
-    const error = useSelector((state: RootState) => state.data.error);
-    const status = useSelector((state: RootState) => state.data.status);
-    const dispatch = useDispatch<AppDispatch>();
-    
-
-    useEffect(() => {
-        dispatch(fetchProductsAction());
-    }, [])
-
-    
+    const [products, setProducts] = useState<Product[]>([]);
+    const dispatch = useDispatch();
    
-    function addToCart(product: Product): void {     
+    useEffect(() => {
+        getProducts();
 
-        //dispatch(createAddtoCartAction(new CartItem(product, 1)));
-        dispatch(addToReduxCart(new CartItem(product, 1)));
+    }, [])
+    
+    async function getProducts() {
 
+        try {
+            const response = await axios.get<Product[]>('http://localhost:9000/products');
+            const data = response.data;
+            setProducts(data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
+    function addToCart(product: Product): void {
+       dispatch(addItemToCart(new CartItem(product, 1)));
+        
+    }
     function renderProducts() {
 
         const productsView =  products.map((item, index) => {
@@ -62,8 +62,7 @@ const GadgetStore: React.FC = () => {
     return (
         <div>
             <h1>Gadget Store</h1>
-            <div className="alert alert-info">API Status: {status}</div>
-            <div className="alert alert-danger">API Error: {error}</div>
+
             <div>
                 {renderProducts()}
             </div>
