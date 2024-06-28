@@ -1,0 +1,1 @@
+--slient --transformIgnorePatterns \"node_modules/(?!axios)/\"
