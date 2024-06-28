@@ -32,7 +32,7 @@ function App() {
 
   return (
 
-    <Router>
+    <Router basename='/reactapp/'>
       <div className='container'>
         <nav className={`navbar navbar-${theme.mode} bg-${theme.mode}`}>
           <div className="container-fluid">

@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { createLoginAction, createLogoutAction } from '../redux/authReducer';
 import { useNavigate } from 'react-router-dom';
+import { InputRefProps } from 'crest-ui-library';
 
 
 
@@ -15,8 +16,10 @@ export function useLogin(){
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     //const usernameRef = useRef<HTMLInputElement>(null);
-    const usernameRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
+    // const usernameRef = useRef<HTMLInputElement>(null);
+    // const passwordRef = useRef<HTMLInputElement>(null);
+    const usernameRef = useRef<InputRefProps>(null);
+    const passwordRef = useRef<InputRefProps>(null);
     useTitle("Login");
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();

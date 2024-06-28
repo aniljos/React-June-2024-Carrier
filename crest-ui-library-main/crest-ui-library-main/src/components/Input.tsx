@@ -8,14 +8,14 @@
 
 
 import React, { Ref, useImperativeHandle } from "react";
-type InputProps = {
+export type InputProps = {
     type: string;
     label: string;
     placeholder?: string;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-type InputRefProps = {
+export type InputRefProps = {
     focus: () => void;
     value: string | undefined;
     test: () => void;
