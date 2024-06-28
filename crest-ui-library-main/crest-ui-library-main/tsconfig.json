@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+      "target": "es5",                         // Compile to ES5
+      "lib": ["dom", "dom.iterable", "esnext"],// Include typings for DOM and latest ECMAScript features
+      "allowJs": true,                         // Allow JavaScript files to be compiled.
+      "skipLibCheck": true,                    // Skip type checking of declaration files.
+      "esModuleInterop": true,                 // Enables ES6-compatible imports from CommonJS modules
+      "allowSyntheticDefaultImports": true,    // Allow default imports from modules with no default export
+      "strict": true,                          // Enable all strict type-checking options
+      "forceConsistentCasingInFileNames": true,// Disallow inconsistently-cased references to the same file.
+      "module": "esnext",                      // Use ESNext module format
+      "moduleResolution": "node",              // Use node.js module resolution strategy
+      "resolveJsonModule": true,               // Include modules imported with '.json' extension
+      "isolatedModules": true,                 // Ensure each file can be safely transpiled without relying on other imports
+      "noEmit": true,                          // Do not emit outputs (no output files, just type checking)
+      "jsx": "react-jsx",                      // Support JSX in .tsx files: "react", "react-jsx", "react-jsxdev"
+      "baseUrl": "./",                         // Set base directory for 'non-relative module names'
+      "paths": {                               // Specify paths mappings to use for import statements
+        "@components/*": ["src/components/*"],
+        "@utils/*": ["src/utils/*"]
+      },
+      "declaration": true,                     // Generate corresponding .d.ts files
+      "outDir": "./dist"                       // Redirect output structure to the directory.
+      
+    },
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.d.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+      "**/*.spec.tsx",
+      "**/*.test.tsx"
+    ]
+  }
+  

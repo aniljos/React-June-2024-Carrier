@@ -7,19 +7,19 @@ import Header from './components/Header';
 import MainContent from './components/MainContent';
 import { routes } from './routes/routes';
 
-async function loadRemoteRoutes(){
+// async function loadRemoteRoutes(){
 
-    try{
-        // @ts-ignore
-        const remoteRoutes = await import('customerRemote/routes')
-        console.log("remote-routes", remoteRoutes);
-        return remoteRoutes.routes;
-    }
-    catch(e){
-        console.log('Error loading remote routes', e);
-        return [];
-    }
-}
+//     try{
+//         // @ts-ignore
+//         const remoteRoutes = await import('customerRemote/routes')
+//         console.log("remote-routes", remoteRoutes);
+//         return remoteRoutes.routes;
+//     }
+//     catch(e){
+//         console.log('Error loading remote routes', e);
+//         return [];
+//     }
+// }
 
 
 function App() {
@@ -28,9 +28,9 @@ function App() {
 
     useEffect(() => {
 
-        loadRemoteRoutes().then((remoteRoutes) => {
-            setAppRoute([...appRoutes, ...remoteRoutes]);
-        })
+        // loadRemoteRoutes().then((remoteRoutes) => {
+        //     setAppRoute([...appRoutes, ...remoteRoutes]);
+        // })
 
     }, []);
 

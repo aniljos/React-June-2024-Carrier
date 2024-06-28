@@ -9,6 +9,7 @@ import EditProduct from './components/EditProduct';
 import ProtectedRoute from './components/ProtectedRoute';
 import ViewCart from './components/ViewCart';
 import { AppThemeContext } from './context/AppThemeContext';
+import MessageWithError from './components/MessageWithError';
 
 //import GadgetStore from './components/GadgetsStore';
 const GadgetStore = React.lazy(() => import('./components/GadgetsStore'));
@@ -56,6 +57,9 @@ function App() {
                 <Link className="nav-link" to="/viewcart">View Cart</Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/errorMessage">Error Boundary</Link>
+              </li>
+              <li className="nav-item">
                 <button className='btn btn-warning' onClick={changeTheme}>Switch Theme</button>
               </li>
             </ul>
@@ -71,6 +75,7 @@ function App() {
               <Route path="/products/:id" element={<EditProduct/>}/>
               <Route path='/gadgets' element={<GadgetStore />} />
               <Route path='/viewcart' element={<ViewCart />} />
+              <Route path='/errorMessage' element={<MessageWithError text='Error'  />} />
             </Routes>
           </Suspense>
         </main>

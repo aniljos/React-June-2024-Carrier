@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 
 
 type CounterProps = {
@@ -10,11 +10,16 @@ function Counter(props: CounterProps){
     //let counter = props.initValue;
     const [counter, setCounter] = useState(props.initValue);
 
+    useEffect(() => {
+        console.log("counter updated", counter);
+    }, [counter])
+
     function inc(evt: MouseEvent<HTMLButtonElement>){
 
         console.log("inc invoked..", evt);
         setCounter(counter + 1);
-        console.log("counter", counter);
+        
+        
     }
     function decr(){
         setCounter(counter - 1);

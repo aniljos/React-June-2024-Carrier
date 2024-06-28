@@ -7,11 +7,14 @@ import { createLoginAction, createLogoutAction } from '../redux/authReducer';
 import { useNavigate } from 'react-router-dom';
 
 
+
+
 export function useLogin(){
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    //const usernameRef = useRef<HTMLInputElement>(null);
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     useTitle("Login");
@@ -33,6 +36,7 @@ export function useLogin(){
 
     async function handleLogin(){
 
+        debugger;
         if(userName && password){
             console.log("User Name", userName, usernameRef.current?.value);
             console.log("Password", password, passwordRef.current?.value);

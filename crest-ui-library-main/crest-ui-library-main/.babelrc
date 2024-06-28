@@ -1,0 +1,11 @@
+{
+    "presets": [
+      "@babel/preset-env", // Transpiles ES6+ syntax
+      "@babel/preset-react", // Transforms JSX into JavaScript
+      "@babel/preset-typescript" // Adds TypeScript support
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime" // Reduces code duplication in your compiled output
+    ]
+  }
+  

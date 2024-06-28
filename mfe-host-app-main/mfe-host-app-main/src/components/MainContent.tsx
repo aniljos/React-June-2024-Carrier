@@ -7,11 +7,11 @@ type MainContentProps = {
 
 }
 
-const RemoteCounter = React.lazy(() => import('customerRemote/Counter'));
-// @ts-ignore
-const ListCustomers = React.lazy(() => import('customerRemote/ListCustomers'));
-// @ts-ignore
-const EditCustomer = React.lazy(() => import('customerRemote/EditCustomer'));
+// const RemoteCounter = React.lazy(() => import('customerRemote/Counter'));
+// // @ts-ignore
+// const ListCustomers = React.lazy(() => import('customerRemote/ListCustomers'));
+// // @ts-ignore
+// const EditCustomer = React.lazy(() => import('customerRemote/EditCustomer'));
 
 function MainContent({routes}: MainContentProps) {
     return (

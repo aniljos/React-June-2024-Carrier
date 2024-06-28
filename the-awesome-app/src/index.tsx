@@ -6,17 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { AppThemeContextProvider } from './context/AppThemeContext'
+import AppErrorBoundary from './components/AppErrorBoundary';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     {/* <AppThemeContext.Provider value={initialState}> */}
-    <AppThemeContextProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </AppThemeContextProvider>
+    <AppErrorBoundary>
+      <AppThemeContextProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </AppThemeContextProvider>
+    </AppErrorBoundary>
     {/* </AppThemeContext.Provider> */}
   </React.StrictMode>
 );

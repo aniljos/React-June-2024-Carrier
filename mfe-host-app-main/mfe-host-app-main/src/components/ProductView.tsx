@@ -14,7 +14,7 @@ type ProductViewProps = {
 //React.memo is a higher order component 
 //that will prevent a functional component from rendering if its props have not changed.
 // Its gets rerendered only if the props or its state changes
-const ProductView : React.FC<ProductViewProps> =React.memo(({product, onDelete, onEdit}) => {
+const ProductView : React.FC<ProductViewProps> =({product, onDelete, onEdit}) => {
 
     console.log("ProductView rendering " + product.name);
 
@@ -30,6 +30,6 @@ const ProductView : React.FC<ProductViewProps> =React.memo(({product, onDelete, 
             </div>
         </div>
     )
-})
+}
 
 export default ProductView;
